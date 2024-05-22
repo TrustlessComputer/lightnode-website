@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import ModalVideo from 'react-modal-video';
 import s from './styles.module.scss';
 // import { Box, Container, Stack, Text } from '@chakra-ui/react';
 import cn from 'classnames';
@@ -48,14 +47,6 @@ const Footer = () => {
                   alt={'right'}
                 />
               </a>
-              <ModalVideo
-                channel="custom"
-                url={'/public-sale/public_sale_video_2.mp4'}
-                isOpen={isOpen}
-                onClose={() => {
-                  setOpen(false);
-                }}
-              />
             </div>
           </div>
           <div className={s.footer_line}></div>

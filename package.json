@@ -39,11 +39,12 @@
     "next": "14.0.4",
     "next-compose-plugins": "^2.2.1",
     "next-plugin-svgr": "^1.1.10",
+    "prettier": "^3.2.5",
     "react": "^18",
     "react-device-detect": "^2.2.3",
+    "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
     "react-infinite-scroll-component": "^6.1.0",
-    "react-modal-video": "^2.0.1",
     "react-qr-code": "^2.0.12",
     "react-redux": "^9.0.4",
     "react-svg": "^16.1.32",
@@ -62,7 +63,15 @@
     "encoding": "^0.1.13",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
+    "eslint-config-prettier": "^9.1.0",
     "husky": "^8.0.3",
     "typescript": "^5.4.3"
+  },
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "eslint-config-next": "^13.4.17",
+    "prettier": "^3.0.2"
   }
 }
