@@ -9,7 +9,7 @@ export const DOMAIN_URL: string = process.env.NEXT_PUBLIC_DOMAIN_URL!;
 export const CDN_URL: string = process.env.NEXT_PUBLIC_CDN_URL!;
 
 // API
-export const API_URL: string = process.env.NEXT_PUBLIC_CDN_URL!;
+export const API_URL: string = process.env.NEXT_PUBLIC_API!;
 
 // Envs
 export const isDevelop = APP_ENV === 'develop';

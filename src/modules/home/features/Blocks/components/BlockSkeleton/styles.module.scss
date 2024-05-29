@@ -1,0 +1,24 @@
+.block_container {
+  ::before {
+    content: '';
+    width: calc(0.16 * $--block-size);
+    height: $--block-size;
+    position: absolute;
+    top: calc(-0.096 * ($--block-size));
+    left: calc(-0.16 * ($--block-size));
+    background-color: #4c5162;
+    transform: skewY(50deg);
+    transform-origin: top;
+  }
+  ::after {
+    content: '';
+    width: ($--block-size);
+    height: calc(0.192 * ($--block-size));
+    position: absolute;
+    top: calc(-0.192 * ($--block-size));
+    left: calc(-0.16 * ($--block-size));
+    background-color: #303649;
+    transform: skew(40deg);
+    transform-origin: top;
+  }
+}

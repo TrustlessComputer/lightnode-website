@@ -9,6 +9,7 @@
 
   -webkit-font-smoothing: antialiased; // Firefox
   -moz-osx-font-smoothing: grayscale !important; // Firefox
+  $--block-size: 125px;
 
   --builder-padding-size: 56px;
   --font-hind: 'Hind Siliguri', sans-serif;
@@ -20,6 +21,12 @@
   @include is-pc {
     --builder-padding-size: 120px;
   }
+
+  transition-duration: inherit;
+  transition-duration: initial;
+  transition-duration: revert;
+  transition-duration: revert-layer;
+  transition-duration: unset;
 }
 
 .slick-slider {

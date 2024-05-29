@@ -5,11 +5,7 @@ import HomePage from '@/modules/home';
 
 export default function Home() {
   return (
-    <MainLayout
-      headerProps={{
-        color: 'black',
-      }}
-    >
+    <MainLayout>
       <HomePage />
     </MainLayout>
   );

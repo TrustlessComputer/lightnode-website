@@ -28,7 +28,8 @@ const createAxiosInstance = ({ baseURL = '' }: { baseURL: string }) => {
 
   instance.interceptors.response.use(
     (res) => {
-      const result = res?.data?.data || res?.data?.result;
+      console.log('RESPONE: ', res);
+      const result = res?.data || res?.data?.data || res?.data?.result;
       if (res?.data?.count !== undefined) {
         return Promise.resolve({
           data: result,

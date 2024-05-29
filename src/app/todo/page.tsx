@@ -5,11 +5,7 @@ import Page from '@/modules/todo';
 
 const BVMPage = () => {
   return (
-    <MainLayout
-      headerProps={{
-        color: 'black',
-      }}
-    >
+    <MainLayout>
       <Page />
     </MainLayout>
   );
