@@ -1,4 +1,6 @@
 .block_container {
+  width: $--block-size;
+  height: $--block-size;
   ::before {
     content: '';
     width: calc(0.16 * $--block-size);
@@ -21,4 +23,9 @@
     transform: skew(40deg);
     transform-origin: top;
   }
+}
+
+.skeleton {
+  width: $--block-size;
+  height: $--block-size;
 }

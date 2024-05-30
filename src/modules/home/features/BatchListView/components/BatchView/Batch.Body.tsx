@@ -1,27 +1,20 @@
+import { BatchStatusEnum, IBatch } from '@/stores/states/batch/types';
 import { Flex, Text } from '@chakra-ui/react';
 import s from './styles.module.scss';
-import { IBlock } from './type';
-import { BlockEnum } from './constants';
 
 type BlockProps = {
-  data?: IBlock;
+  data?: IBatch;
 };
 
-const BlockBody = (props: BlockProps) => {
+const BatchBody = (props: BlockProps) => {
   const { data } = props;
 
   if (!data) return null;
 
-  const { blockType } = data;
+  const { status } = data;
 
   return (
-    <Flex
-      w={'155px'}
-      h={'155px'}
-      position={'relative'}
-      className={s.block_container}
-    >
-      {/* Data Content */}
+    <Flex position={'relative'} className={s.block_container} zIndex={2}>
       <Flex
         display={'flex'}
         flexDir={'column'}
@@ -29,10 +22,8 @@ const BlockBody = (props: BlockProps) => {
         textAlign={'center'}
         fontSize={'13px'}
         justify={'center'}
-        w={'125px'}
-        h={'125px'}
         className={
-          blockType === BlockEnum.PENDING
+          status === BatchStatusEnum.PENDING
             ? s.backgroundColor_pending
             : s.backgroundColor_success
         }
@@ -51,4 +42,4 @@ const BlockBody = (props: BlockProps) => {
   );
 };
 
-export default BlockBody;
+export default BatchBody;

@@ -1,5 +1,5 @@
-import { getBatchStatus } from '@/services/Block';
-import { IStatusResponse } from '@/services/Block/type';
+import BatchAPI from '@/services/Batch';
+import { IStatusResponse } from '@/services/Batch/type';
 import { getErrorMessage } from '@/utils/error';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -17,7 +17,7 @@ export const useBatchStatus = (props: Props) => {
   const fetchBatchStatus = async () => {
     try {
       setLoading(true);
-      const data = await getBatchStatus();
+      const data = await BatchAPI.getBatchStatus();
       setData(data);
     } catch (error) {
       const { message } = getErrorMessage(error);

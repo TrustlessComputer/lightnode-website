@@ -1,7 +1,7 @@
 import modal from '@/stores/states/modal/reducer';
-import user from '@/stores/states/user/reducer';
+import batch from '@/stores/states/batch/reducer';
 
 export default {
   modal,
-  user,
+  batch,
 };

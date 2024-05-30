@@ -1,5 +1,3 @@
-'use client';
-
 import { Flex } from '@chakra-ui/react';
 import { usePathname } from 'next/navigation';
 import React, { useEffect } from 'react';

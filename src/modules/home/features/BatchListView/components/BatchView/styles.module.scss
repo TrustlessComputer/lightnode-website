@@ -1,4 +1,8 @@
 .block_container {
+  // background: #d1cfcf;
+  width: 155px;
+  height: 155px;
+
   :hover {
     cursor: pointer;
     opacity: 0.8;
@@ -30,8 +34,8 @@
 
   .backgroundColor {
     &_pending {
-      width: 125px;
-      height: 125px;
+      width: $--block-size;
+      height: $--block-size;
       position: absolute;
       top: 0;
 
@@ -75,6 +79,8 @@
     }
 
     &_success {
+      width: $--block-size;
+      height: $--block-size;
       background: repeating-linear-gradient(to bottom, #9339f4, #007bff);
     }
   }
