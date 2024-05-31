@@ -11,6 +11,10 @@ export const CDN_URL: string = process.env.NEXT_PUBLIC_CDN_URL!;
 // API
 export const API_URL: string = process.env.NEXT_PUBLIC_API!;
 
+// PUBLIC URL
+export const BITCOIN_EXPLORER_URL: string =
+  process.env.NEXT_PUBLIC_BITCOIN_EXPLORER_URL!;
+
 // Envs
 export const isDevelop = APP_ENV === 'develop';
 export const isStaging = APP_ENV === 'staging';

@@ -1,22 +1,20 @@
+import {
+  IBatchData,
+  IBatchStatusResponse,
+  StatusResponseInit,
+} from '@/services/Batch/type';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import {
   fetchBatchPendingList,
   fetchBatchStatus,
   fetchBatchSuccessList,
 } from './actions';
-import { IBatch, IBatchState } from './types';
+import { IBatchState } from './types';
 
 const initialState: IBatchState = {
   isBatchStatusFetching: false,
   isBatchStatusFetched: false,
-  batchStatus: {
-    pending: 0,
-    pendingJob: [],
-    sending: 0,
-    sendingJob: [],
-    success: 0,
-    successJob: [],
-  },
+  batchStatus: StatusResponseInit,
 
   isBatchSuccessFetched: false,
   isBatchSuccessFetching: false,
@@ -33,7 +31,7 @@ const slice = createSlice({
   name: 'BATCH_STATE',
   initialState: initialState,
   reducers: {
-    setCurrentBath: (state, action: PayloadAction<IBatch>) => {
+    setCurrentBath: (state, action: PayloadAction<IBatchData | undefined>) => {
       state.currentBatchSelect = action.payload;
     },
   },
@@ -42,23 +40,19 @@ const slice = createSlice({
       .addCase(fetchBatchStatus.pending, (state) => {
         state.isBatchStatusFetching = true;
       })
-      .addCase(fetchBatchStatus.fulfilled, (state, action) => {
-        state.isBatchStatusFetching = false;
-        state.isBatchStatusFetched = true;
-        state.batchStatus = action.payload;
-        state.fetchBatchStatusError = undefined;
-      })
+      .addCase(
+        fetchBatchStatus.fulfilled,
+        (state, action: PayloadAction<IBatchStatusResponse>) => {
+          state.isBatchStatusFetching = false;
+          state.isBatchStatusFetched = true;
+          state.batchStatus = action.payload;
+          state.fetchBatchStatusError = undefined;
+        },
+      )
       .addCase(fetchBatchStatus.rejected, (state, action) => {
         state.isBatchStatusFetching = false;
         state.isBatchStatusFetched = true;
-        state.batchStatus = {
-          pending: 0,
-          pendingJob: [],
-          sending: 0,
-          sendingJob: [],
-          success: 0,
-          successJob: [],
-        };
+        state.batchStatus = StatusResponseInit;
         state.fetchBatchStatusError = action.error.message;
       })
 

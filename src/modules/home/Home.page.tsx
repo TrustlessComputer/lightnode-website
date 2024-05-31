@@ -18,7 +18,7 @@ const HomePage = () => {
       <BatchListView />
 
       {/* White Break Line */}
-      <Flex bgColor={'#fff'} width={'60%'} h={'4px'} />
+      <Flex bgColor={'#fff'} maxW={'50%'} w={'50%'} h={'4px'} />
 
       {/* Table Detail content */}
       <BatchTableDetail />

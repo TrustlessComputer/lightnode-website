@@ -1,4 +1,4 @@
-import { IStatusResponse } from '@/services/Batch/type';
+import { IBatchData, IBatchStatusResponse } from '@/services/Batch/type';
 
 export enum BatchStatusEnum {
   SUCCESS = 1,
@@ -17,7 +17,7 @@ export type IBatch = {
 };
 
 export interface IBatchState {
-  batchStatus: IStatusResponse;
+  batchStatus: IBatchStatusResponse;
   isBatchStatusFetching: boolean;
   isBatchStatusFetched: boolean;
   fetchBatchStatusError?: Error | string;
@@ -32,5 +32,5 @@ export interface IBatchState {
   isBatchPendingFetched: boolean;
   fetchBatchPendingError?: Error | string;
 
-  currentBatchSelect: IBatch | undefined;
+  currentBatchSelect: IBatchData | undefined;
 }

@@ -22,8 +22,9 @@ export default () => {
       justify={'center'}
       align={'center'}
       pos={'relative'}
-      mx={'40px'}
-      my={'10px'}
+      mx={'10px'}
+      my={'20px'}
+      py={'10px'}
     >
       <Flex gap={'50px'}>{batchSuccessList}</Flex>
 

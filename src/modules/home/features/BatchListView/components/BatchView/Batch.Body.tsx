@@ -1,20 +1,61 @@
-import { BatchStatusEnum, IBatch } from '@/stores/states/batch/types';
+import { IBatchData } from '@/services/Batch/type';
 import { Flex, Text } from '@chakra-ui/react';
+import { useMemo } from 'react';
 import s from './styles.module.scss';
+import { formatAddressCenter } from '@/utils/string';
 
 type BlockProps = {
-  data?: IBatch;
+  data?: IBatchData;
+  blockOnClick: (item: IBatchData) => void;
 };
 
 const BatchBody = (props: BlockProps) => {
-  const { data } = props;
+  const { data, blockOnClick } = props;
 
   if (!data) return null;
 
-  const { status } = data;
+  const { status, revealTxId, baseTxLength, proverJob } = data;
+
+  const isQueue = useMemo(() => {
+    return status === 'queued';
+  }, [status]);
+
+  const renderSuccessData = () => {
+    return (
+      <>
+        <Text color={'#ffe205'} fontWeight={700}>
+          {`revealTxId: ${formatAddressCenter(revealTxId || '', 6)}`}
+        </Text>
+      </>
+    );
+  };
+
+  const renderQueueData = () => {
+    return (
+      <Flex flexDir={'column'} gap={'3px'}>
+        <Text color={'#fff'} fontWeight={700}>
+          {`baseTxLength: ${baseTxLength}`}
+        </Text>
+        <Text color={'#fff'} fontWeight={700}>
+          {`l1_batch_number: ${proverJob?.l1_batch_number}`}
+        </Text>
+        <Text color={'#fff'} fontWeight={700}>
+          {`success: ${proverJob?.success}`}
+        </Text>
+        <Text color={'#fff'} fontWeight={700}>
+          {`in_progress: ${proverJob?.in_progress}`}
+        </Text>
+      </Flex>
+    );
+  };
 
   return (
-    <Flex position={'relative'} className={s.block_container} zIndex={2}>
+    <Flex
+      position={'relative'}
+      className={s.block_container}
+      zIndex={2}
+      onClick={() => blockOnClick(data)}
+    >
       <Flex
         display={'flex'}
         flexDir={'column'}
@@ -23,20 +64,10 @@ const BatchBody = (props: BlockProps) => {
         fontSize={'13px'}
         justify={'center'}
         className={
-          status === BatchStatusEnum.PENDING
-            ? s.backgroundColor_pending
-            : s.backgroundColor_success
+          isQueue ? s.backgroundColor_pending : s.backgroundColor_success
         }
       >
-        <Text>~9 sat/vB</Text>
-        <Text color={'#ffe205'} fontWeight={700}>
-          8-402 sat/vB
-        </Text>
-        <Text fontSize={'15px'} fontWeight={600}>
-          1.68MB
-        </Text>
-        <Text>3,874 transactions</Text>
-        <Text>12 minutes ago</Text>
+        {isQueue ? renderQueueData() : renderSuccessData()}
       </Flex>
     </Flex>
   );

@@ -22,22 +22,20 @@ const TableRow = (props: Props) => {
       bgColor={'#181b2d'}
     >
       <Flex maxW={'40%'} justify={'flex-start'} align={'center'}>
-        <Text fontSize={'14px'} fontWeight={500} color={'#fff'}>
+        <Text fontSize={'15px'} fontWeight={500} color={'#d4d4d4'}>
           {lable}
         </Text>
       </Flex>
 
       <Flex
         maxW={'60%'}
-        overflow={'hidden'}
         whiteSpace={'nowrap'}
-        textOverflow={'ellipsis'}
-        fontSize={'14px'}
-        fontWeight={500}
+        fontSize={'15px'}
+        fontWeight={600}
         color={'#fff'}
         textAlign={'start'}
       >
-        <Text>{content}</Text>
+        {content}
       </Flex>
     </Flex>
   );

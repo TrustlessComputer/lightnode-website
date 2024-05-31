@@ -1,21 +1,44 @@
-import { BatchStatusEnum, IBatch } from '@/stores/states/batch/types';
+import { IBatchData } from '@/services/Batch/type';
 import { Flex } from '@chakra-ui/react';
+import { useMemo } from 'react';
 import BatchBody from './Batch.Body';
 import BatchFooter from './Batch.Footer';
 import BatchHeader from './Batch.Header';
+import { useAppDispatch, useAppSelector } from '@/stores';
+import { setCurrentBath } from '@/stores/states/batch/reducer';
+import { getCurrentBatchSelectedSelector } from '@/stores/states/batch/selector';
 import BatchAnchor from './Batch.Anchor';
+import { BITCOIN_EXPLORER_URL } from '@/config';
 
 type BlockProps = {
-  data?: IBatch;
+  data?: IBatchData;
   index: number;
 };
 
 const BatchItem = (props: BlockProps) => {
   const { data, index } = props;
 
+  const dispatch = useAppDispatch();
+  const currentBatch = useAppSelector(getCurrentBatchSelectedSelector);
+
   if (!data) return null;
   const { status } = data;
-  const isCurrentBlock = true;
+
+  const isQueue = useMemo(() => {
+    return status === 'queued';
+  }, [status]);
+
+  const isCurrentBlock = useMemo(() => {
+    return currentBatch?.batchNumber === data.batchNumber;
+  }, [currentBatch, data]);
+
+  const blockOnClickHandler = (data: IBatchData) => {
+    if (isQueue) {
+    } else {
+      // window.open(`${BITCOIN_EXPLORER_URL}/tx/${data.revealTxId}`, '_blank');
+    }
+    dispatch(setCurrentBath(data));
+  };
 
   return (
     <Flex
@@ -25,10 +48,10 @@ const BatchItem = (props: BlockProps) => {
       justify={'center'}
       key={index}
     >
-      {status === BatchStatusEnum.SUCCESS && <BatchHeader data={data} />}
-      <BatchBody data={data} />
-      {status === BatchStatusEnum.SUCCESS && <BatchFooter data={data} />}
-      {/* {isCurrentBlock && <BatchAnchor data={data} />} */}
+      {<BatchHeader data={data} />}
+      <BatchBody data={data} blockOnClick={blockOnClickHandler} />
+      {<BatchFooter data={data} />}
+      {isCurrentBlock && <BatchAnchor />}
     </Flex>
   );
 };

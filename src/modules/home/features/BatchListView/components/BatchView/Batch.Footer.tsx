@@ -1,9 +1,8 @@
-import { Flex, Text, Box } from '@chakra-ui/react';
-import s from './styles.module.scss';
-import { IBatch } from '@/stores/states/batch/types';
+import { IBatchData } from '@/services/Batch/type';
+import { Flex, Text } from '@chakra-ui/react';
 
 type BlockProps = {
-  data?: IBatch;
+  data?: IBatchData;
 };
 
 const BatchFooter = (props: BlockProps) => {
@@ -27,7 +26,7 @@ const BatchFooter = (props: BlockProps) => {
         fontWeight={600}
         fontSize={'12px'}
       >
-        {data?.label}
+        {data?.status}
       </Text>
     </Flex>
   );

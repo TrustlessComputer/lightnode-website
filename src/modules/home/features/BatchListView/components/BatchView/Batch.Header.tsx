@@ -1,8 +1,8 @@
-import { IBatch } from '@/stores/states/batch/types';
+import { IBatchData } from '@/services/Batch/type';
 import { Flex, Text } from '@chakra-ui/react';
 
 type BlockProps = {
-  data?: IBatch;
+  data?: IBatchData;
 };
 
 const BatchHeader = (props: BlockProps) => {
@@ -12,12 +12,12 @@ const BatchHeader = (props: BlockProps) => {
       display={'flex'}
       position={'absolute'}
       mr={'40px'}
-      top={'-60px'}
-      p={'20px'}
+      top={'-50px'}
+      p={'0px'}
       zIndex={3}
     >
       <Text color={'#1bd8f4'} fontWeight={700}>
-        {`${data?.base_batch_number || ''}`}
+        {`${data?.batchNumber || ''}`}
       </Text>
     </Flex>
   );

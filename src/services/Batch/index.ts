@@ -1,6 +1,6 @@
 import { API_URL } from '@/config';
 import createAxiosInstance from '@/services/http-client';
-import { IStatusResponse } from './type';
+import { IBatchStatusResponse } from './type';
 import { BATCH_PENDING_LIST, BATCH_SUCCESS_LIST } from './dummy';
 
 const apiClient = createAxiosInstance({
@@ -9,7 +9,7 @@ const apiClient = createAxiosInstance({
 
 const getBatchStatus = async () => {
   try {
-    const result: IStatusResponse = await apiClient.get(`/status`);
+    const result: IBatchStatusResponse = await apiClient.get(`/status`);
     return result;
   } catch (error) {
     throw error;
