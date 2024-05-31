@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { fetchBatchPendingList, fetchBatchSuccessList } from './actions';
-import { IBatchState } from './types';
+import { IBatch, IBatchState } from './types';
 
 const initialState: IBatchState = {
   isBatchSuccessFetched: false,
@@ -10,12 +10,18 @@ const initialState: IBatchState = {
   isBatchPendingFetching: false,
   isBatchPendingFetched: false,
   batchPendingList: [],
+
+  currentBatchSelect: undefined,
 };
 
 const slice = createSlice({
   name: 'BATCH_STATE',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setCurrentBath: (state, action: PayloadAction<IBatch>) => {
+      state.currentBatchSelect = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBatchSuccessList.pending, (state) => {

@@ -3,6 +3,7 @@ import { Flex } from '@chakra-ui/react';
 import BatchBody from './Batch.Body';
 import BatchFooter from './Batch.Footer';
 import BatchHeader from './Batch.Header';
+import BatchAnchor from './Batch.Anchor';
 
 type BlockProps = {
   data?: IBatch;
@@ -13,8 +14,9 @@ const BatchItem = (props: BlockProps) => {
   const { data, index } = props;
 
   if (!data) return null;
-
   const { status } = data;
+  const isCurrentBlock = true;
+
   return (
     <Flex
       flexDir={'column'}
@@ -26,6 +28,7 @@ const BatchItem = (props: BlockProps) => {
       {status === BatchStatusEnum.SUCCESS && <BatchHeader data={data} />}
       <BatchBody data={data} />
       {status === BatchStatusEnum.SUCCESS && <BatchFooter data={data} />}
+      {/* {isCurrentBlock && <BatchAnchor data={data} />} */}
     </Flex>
   );
 };

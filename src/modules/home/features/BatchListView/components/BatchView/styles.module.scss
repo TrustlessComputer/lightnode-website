@@ -85,3 +85,15 @@
     }
   }
 }
+
+.anchorView {
+  position: relative !important;
+  margin-top: -10px;
+  margin-right: 20px;
+  width: 0 !important;
+  height: 0 !important;
+  border-left: calc(0.2 * $--block-size) solid transparent !important;
+  border-right: calc(0.2 * $--block-size) solid transparent !important;
+  border-bottom: calc(0.2 * $--block-size) solid white !important;
+  z-index: 5 !important;
+}

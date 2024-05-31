@@ -40,9 +40,9 @@ const BatchListView = () => {
 
   useEffect(() => {
     fetchAllData();
-    timerRef.current = setInterval(() => {
-      fetchAllData();
-    }, INTERVAL_TIMER);
+    // timerRef.current = setInterval(() => {
+    //   fetchAllData();
+    // }, INTERVAL_TIMER);
     return () => {
       clearTimer();
     };

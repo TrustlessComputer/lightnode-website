@@ -1,27 +1,27 @@
 'use client';
 
 import { Flex } from '@chakra-ui/react';
+
 import BatchListView from './features/BatchListView';
+import BatchTableDetail from './features/BatchTableDetail';
 
 const HomePage = () => {
   return (
     <Flex
+      flexDir={'column'}
       minW={'90dvw'}
       minH={'100dvh'}
       bgColor={'black'}
-      css={{
-        '&::-webkit-scrollbar': {
-          width: '0px',
-        },
-        '&::-webkit-scrollbar-track': {
-          width: '0px',
-        },
-        '&::-webkit-scrollbar-thumb': {
-          borderRadius: '0px',
-        },
-      }}
+      align={'center'}
+      gap={'30px'}
     >
       <BatchListView />
+
+      {/* White Break Line */}
+      <Flex bgColor={'#fff'} width={'60%'} h={'4px'} />
+
+      {/* Table Detail content */}
+      <BatchTableDetail />
     </Flex>
   );
 };

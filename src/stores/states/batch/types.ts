@@ -24,4 +24,6 @@ export interface IBatchState {
   isBatchPendingFetching: boolean;
   isBatchPendingFetched: boolean;
   fetchBatchPendingError?: Error | string;
+
+  currentBatchSelect: IBatch | undefined;
 }

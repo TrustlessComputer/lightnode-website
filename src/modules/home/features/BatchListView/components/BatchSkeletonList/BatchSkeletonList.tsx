@@ -1,15 +1,18 @@
-import { Flex } from '@chakra-ui/react';
-import BatchSkeleton from './BatchSkeleton';
-import BlockDivider from '../BlockDivider';
 import { BATCH_PENDING_LIST, BATCH_SUCCESS_LIST } from '@/services/Batch/dummy';
+import { Flex } from '@chakra-ui/react';
+import { useMemo } from 'react';
+import BlockDivider from '../BlockDivider';
+import BatchSkeleton from './BatchSkeleton';
 
 export default () => {
-  const batchSuccessList = BATCH_SUCCESS_LIST.map((item, index) => (
-    <BatchSkeleton index={index} key={`${item.bitcoin_tx_hash}`} />
-  ));
-  const batchPendingList = BATCH_PENDING_LIST.map((item, index) => (
-    <BatchSkeleton index={index} key={`${item.bitcoin_tx_hash}`} />
-  ));
+  const batchSuccessList = useMemo(
+    () => BATCH_SUCCESS_LIST.map(() => <BatchSkeleton />),
+    [],
+  );
+  const batchPendingList = useMemo(
+    () => BATCH_PENDING_LIST.map(() => <BatchSkeleton />),
+    [],
+  );
 
   return (
     <Flex
@@ -19,7 +22,8 @@ export default () => {
       justify={'center'}
       align={'center'}
       pos={'relative'}
-      py={'30px'}
+      mx={'40px'}
+      my={'10px'}
     >
       <Flex gap={'50px'}>{batchSuccessList}</Flex>
 

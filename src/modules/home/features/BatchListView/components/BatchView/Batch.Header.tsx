@@ -17,8 +17,7 @@ const BatchHeader = (props: BlockProps) => {
       zIndex={3}
     >
       <Text color={'#1bd8f4'} fontWeight={700}>
-        {/* {data?.l1BatchNumber} */}
-        {data?.base_batch_number}
+        {`${data?.base_batch_number || ''}`}
       </Text>
     </Flex>
   );
