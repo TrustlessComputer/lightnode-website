@@ -2,6 +2,19 @@
 import BatchAPI from '@/services/Batch';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IBatch } from './types';
+import { IStatusResponse } from '@/services/Batch/type';
+
+const fetchBatchStatus = createAsyncThunk(
+  `BATCH_STATE/fetchBatchStatus`,
+  async () => {
+    try {
+      const data: IStatusResponse = await BatchAPI.getBatchStatus();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
 
 const fetchBatchSuccessList = createAsyncThunk(
   `BATCH_STATE/fetchBatchSuccessList`,
@@ -27,4 +40,4 @@ const fetchBatchPendingList = createAsyncThunk(
   },
 );
 
-export { fetchBatchPendingList, fetchBatchSuccessList };
+export { fetchBatchStatus, fetchBatchPendingList, fetchBatchSuccessList };

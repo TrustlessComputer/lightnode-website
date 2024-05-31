@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
-export const APP_NAME = 'Zk BVM LightNode';
-export const APP_DEFAULT_TITLE = 'Zk BVM LightNode';
-export const APP_TITLE_TEMPLATE = 'Zk BVM LightNode';
-export const APP_DESCRIPTION = 'Zk BVM LightNode Description.';
+export const APP_NAME = 'Supersonic';
+export const APP_DEFAULT_TITLE = 'Supersonic';
+export const APP_TITLE_TEMPLATE = 'Supersonic';
+export const APP_DESCRIPTION = 'Supersonic Description.';
 
 const metadataConfig: Metadata = {
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_DOMAIN_URL}`),

@@ -1,8 +1,23 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { fetchBatchPendingList, fetchBatchSuccessList } from './actions';
+import {
+  fetchBatchPendingList,
+  fetchBatchStatus,
+  fetchBatchSuccessList,
+} from './actions';
 import { IBatch, IBatchState } from './types';
 
 const initialState: IBatchState = {
+  isBatchStatusFetching: false,
+  isBatchStatusFetched: false,
+  batchStatus: {
+    pending: 0,
+    pendingJob: [],
+    sending: 0,
+    sendingJob: [],
+    success: 0,
+    successJob: [],
+  },
+
   isBatchSuccessFetched: false,
   isBatchSuccessFetching: false,
   batchSuccessList: [],
@@ -24,6 +39,29 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchBatchStatus.pending, (state) => {
+        state.isBatchStatusFetching = true;
+      })
+      .addCase(fetchBatchStatus.fulfilled, (state, action) => {
+        state.isBatchStatusFetching = false;
+        state.isBatchStatusFetched = true;
+        state.batchStatus = action.payload;
+        state.fetchBatchStatusError = undefined;
+      })
+      .addCase(fetchBatchStatus.rejected, (state, action) => {
+        state.isBatchStatusFetching = false;
+        state.isBatchStatusFetched = true;
+        state.batchStatus = {
+          pending: 0,
+          pendingJob: [],
+          sending: 0,
+          sendingJob: [],
+          success: 0,
+          successJob: [],
+        };
+        state.fetchBatchStatusError = action.error.message;
+      })
+
       .addCase(fetchBatchSuccessList.pending, (state) => {
         state.isBatchSuccessFetching = true;
       })
@@ -57,6 +95,6 @@ const slice = createSlice({
   },
 });
 
-export const {} = slice.actions;
+export const { setCurrentBath } = slice.actions;
 
 export default slice.reducer;
