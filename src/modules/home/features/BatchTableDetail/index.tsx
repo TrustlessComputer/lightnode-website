@@ -25,7 +25,7 @@ const BatchTableDetail = () => {
     return (
       <>
         <TableRow
-          lable="Verified by Light Node"
+          lable="Verified by Light Node:"
           content={
             <Text
               fontSize={'15px'}
@@ -38,7 +38,7 @@ const BatchTableDetail = () => {
           }
         />
         <TableRow
-          lable="Inscribed on Bitcoin at"
+          lable="Inscribed on Bitcoin at:"
           content={
             <Link
               color={'#1bd8f4'}
@@ -67,7 +67,7 @@ const BatchTableDetail = () => {
           }
         />
         <TableRow
-          lable="Stored on DA at"
+          lable="Stored on DA at:"
           content={
             <Text fontSize={'15px'} fontWeight={600}>
               {``}
@@ -85,7 +85,7 @@ const BatchTableDetail = () => {
     return (
       <>
         <TableRow
-          lable="Verified by Light Node"
+          lable="Verified by Light Node:"
           content={
             <Text
               fontSize={'15px'}
