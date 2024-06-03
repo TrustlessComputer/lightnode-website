@@ -10,7 +10,6 @@ const HomePage = () => {
     <Flex
       flexDir={'column'}
       minW={'90dvw'}
-      minH={'100dvh'}
       bgColor={'black'}
       align={'center'}
       gap={'30px'}

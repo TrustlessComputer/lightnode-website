@@ -90,6 +90,7 @@ const BatchTableDetail = () => {
             <Text
               fontSize={'15px'}
               fontWeight={500}
+              textTransform={'capitalize'}
               color={isQueued ? '#febc06' : '#3cdb1c'}
             >
               {`${status}`}

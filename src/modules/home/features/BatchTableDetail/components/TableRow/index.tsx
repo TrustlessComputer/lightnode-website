@@ -32,7 +32,7 @@ const TableRow = (props: Props) => {
         maxW={'50%'}
         whiteSpace={'nowrap'}
         fontSize={'15px'}
-        fontWeight={600}
+        fontWeight={700}
         overflow={'hidden'}
         textAlign={'start'}
       >

@@ -23,7 +23,7 @@ const BatchBody = (props: BlockProps) => {
   const renderSuccessData = () => {
     return (
       <>
-        <Text color={'#ffe205'} fontWeight={700}>
+        <Text color={'#ffe205'} fontWeight={700} textTransform={'capitalize'}>
           {`Verified by Light Node:`}
           <Text color={'#ffe205'} fontWeight={700} fontSize={'14px'}>
             {`${formatAddressCenter(revealTxId || '', 6)}`}
@@ -45,9 +45,9 @@ const BatchBody = (props: BlockProps) => {
         <Text color={'#fff'} fontWeight={700}>
           {`baseTxLength: ${baseTxLength}`}
         </Text>
-        <Text color={'#fff'} fontWeight={700}>
+        {/* <Text color={'#fff'} fontWeight={700}>
           {`l1_batch_number: ${proverJob?.l1_batch_number}`}
-        </Text>
+        </Text> */}
         <Text color={'#fff'} fontWeight={700}>
           {`success: ${proverJob?.success}`}
         </Text>
