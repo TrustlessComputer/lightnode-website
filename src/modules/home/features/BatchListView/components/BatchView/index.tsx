@@ -22,7 +22,7 @@ const BatchItem = (props: BlockProps) => {
   const currentBatch = useAppSelector(getCurrentBatchSelectedSelector);
 
   if (!data) return null;
-  const { status } = data;
+  const { status, isEmpty } = data;
 
   const isQueue = useMemo(() => {
     return status === 'queued';
@@ -33,11 +33,11 @@ const BatchItem = (props: BlockProps) => {
   }, [currentBatch, data]);
 
   const blockOnClickHandler = (data: IBatchData) => {
-    if (isQueue) {
+    if (isEmpty) {
     } else {
       // window.open(`${BITCOIN_EXPLORER_URL}/tx/${data.revealTxId}`, '_blank');
+      dispatch(setCurrentBath(data));
     }
-    dispatch(setCurrentBath(data));
   };
 
   return (

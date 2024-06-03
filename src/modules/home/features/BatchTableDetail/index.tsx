@@ -17,6 +17,9 @@ const BatchTableDetail = () => {
     return currentBatchSelected?.status === 'queued';
   }, [currentBatchSelected]);
 
+  const isEmpty = useMemo(() => {
+    return currentBatchSelected?.isEmpty;
+  }, [currentBatchSelected]);
   const renderSuccessData = () => {
     return (
       <>
@@ -41,7 +44,7 @@ const BatchTableDetail = () => {
                 }
               }}
             >
-              {`${formatAddressCenter(currentBatchSelected?.revealTxId || '', 16)}`}
+              {`${formatAddressCenter(currentBatchSelected?.revealTxId || '', 14)}`}
             </Link>
           }
           isOdd={true}
@@ -81,6 +84,8 @@ const BatchTableDetail = () => {
       </>
     );
   };
+
+  if (isEmpty) return null;
 
   return (
     <Flex className={s.container}>

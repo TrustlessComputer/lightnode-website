@@ -2,6 +2,9 @@ export type IBatchStatus = {
   batchNumber?: string;
   status?: string;
   revealTxId?: string;
+
+  //Local State
+  isEmpty?: boolean;
 };
 
 export type IBatchQueueJob = {

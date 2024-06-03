@@ -1,6 +1,7 @@
 import { RootState } from '@/stores';
 import { createSelector } from '@reduxjs/toolkit';
 import { orderBy } from 'lodash';
+import { QUEUE_JOB_PLACEHOLDER } from './constants';
 
 export const batchStateSelector = (state: RootState) => state.batch;
 
@@ -22,6 +23,13 @@ export const queueJobSelector = createSelector(batchStateSelector, (state) => {
   // console.log('queuedJobSortedList ', queuedJobSortedList);
   return queuedJobSortedList;
 });
+
+export const queueJobPlaceHolderSelector = createSelector(
+  batchStateSelector,
+  (state) => {
+    return QUEUE_JOB_PLACEHOLDER;
+  },
+);
 
 export const pendingJobSelector = createSelector(
   batchStateSelector,

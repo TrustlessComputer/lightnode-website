@@ -22,6 +22,6 @@ export const BATCH_SUCCESS_LIST: IBatch[] = new Array(5)
       da_tx_hash: '',
       batch_data: undefined,
       status: BatchStatusEnum.SUCCESS,
-      label: 'ABCD',
+      label: '',
     };
   });

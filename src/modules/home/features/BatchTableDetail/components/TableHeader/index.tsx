@@ -18,21 +18,23 @@ const TableHeader = () => {
       <Text color={'#fff'} fontWeight={600}>
         {'Batch: '}
       </Text>
-      <Link
-        color={'#1bd8f4'}
-        fontWeight={600}
-        target="_blank"
-        onClick={() => {
-          if (isQueued) {
-          } else {
-            window.open(
-              `${BITCOIN_EXPLORER_URL}/tx/${currentBatchSelected?.revealTxId}`,
-            );
-          }
-        }}
-      >
-        {`#${currentBatchSelected?.batchNumber}`}
-      </Link>
+      {currentBatchSelected?.batchNumber && (
+        <Link
+          color={'#1bd8f4'}
+          fontWeight={600}
+          target="_blank"
+          onClick={() => {
+            if (isQueued) {
+            } else {
+              window.open(
+                `${BITCOIN_EXPLORER_URL}/tx/${currentBatchSelected?.revealTxId}`,
+              );
+            }
+          }}
+        >
+          {`#${currentBatchSelected?.batchNumber}`}
+        </Link>
+      )}
       {/* <Image src={`/icons/arrow-right.svg`} height={'35px'} width={'auto'} /> */}
     </Flex>
   );

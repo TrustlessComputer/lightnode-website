@@ -14,7 +14,7 @@ const BatchBody = (props: BlockProps) => {
 
   if (!data) return null;
 
-  const { status, revealTxId, baseTxLength, proverJob } = data;
+  const { status, revealTxId, baseTxLength, proverJob, isEmpty } = data;
 
   const isQueue = useMemo(() => {
     return status === 'queued';
@@ -31,6 +31,12 @@ const BatchBody = (props: BlockProps) => {
   };
 
   const renderQueueData = () => {
+    if (isEmpty)
+      return (
+        <Text color={'#fff'} fontWeight={700}>
+          {`Empty`}
+        </Text>
+      );
     return (
       <Flex flexDir={'column'} gap={'3px'}>
         <Text color={'#fff'} fontWeight={700}>

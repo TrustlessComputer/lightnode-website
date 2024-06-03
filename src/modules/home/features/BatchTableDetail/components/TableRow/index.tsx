@@ -33,6 +33,7 @@ const TableRow = (props: Props) => {
         fontSize={'15px'}
         fontWeight={600}
         color={'#fff'}
+        overflow={'hidden'}
         textAlign={'start'}
       >
         {content}
