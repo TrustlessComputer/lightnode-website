@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from '@/stores';
 import { setCurrentBath } from '@/stores/states/batch/reducer';
 import { getCurrentBatchSelectedSelector } from '@/stores/states/batch/selector';
 import BatchAnchor from './Batch.Anchor';
-import { BITCOIN_EXPLORER_URL } from '@/config';
 
 type BlockProps = {
   data?: IBatchData;

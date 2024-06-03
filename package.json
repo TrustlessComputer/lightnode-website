@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "local": "cp ./envs/.env.local .env && next dev",
-    "dev": "cp ./envs/.env.develop .env && next dev -p 9001",
-    "ld": "export PORT=3010 && cp ./envs/.env.develop .env  && rm -rf .next && next dev",
-    "ls": "export PORT=3010 && cp ./envs/.env.staging .env  && rm -rf .next && next dev",
-    "lp": "export PORT=3010 && cp ./envs/.env.production .env  && rm -rf .next && next dev",
+    "dev": "cp ./envs/.env.develop .env && next dev -p 5001",
+    "ld": "export PORT=5001 && cp ./envs/.env.develop .env  && rm -rf .next && next dev",
+    "ls": "export PORT=5001 && cp ./envs/.env.staging .env  && rm -rf .next && next dev",
+    "lp": "export PORT=5001 && cp ./envs/.env.production .env  && rm -rf .next && next dev",
     "build": "next build",
-    "start": "next start -p 3010",
+    "start": "next start -p 5001",
     "build-stats": "cross-env ANALYZE=true npm run build",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build"
