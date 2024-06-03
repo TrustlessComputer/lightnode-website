@@ -20,13 +20,22 @@ const BatchTableDetail = () => {
   const isEmpty = useMemo(() => {
     return currentBatchSelected?.isEmpty;
   }, [currentBatchSelected]);
+
   const renderSuccessData = () => {
     return (
       <>
         <TableRow
           lable="Status"
-          content={`${currentBatchSelected?.status}`}
-          isOdd={false}
+          content={
+            <Text
+              fontSize={'15px'}
+              fontWeight={600}
+              textTransform={'capitalize'}
+              color={isQueued ? '#febc06' : '#3cdb1c'}
+            >
+              {`${currentBatchSelected?.status}`}
+            </Text>
+          }
         />
         <TableRow
           lable="Reveal TxId"
@@ -59,28 +68,26 @@ const BatchTableDetail = () => {
     const { baseTxLength, proverJob, status } = currentBatchSelected;
     return (
       <>
-        <TableRow lable="Status" content={`${status}`} isOdd={false} />
+        <TableRow
+          lable="Status"
+          content={
+            <Text
+              fontSize={'15px'}
+              fontWeight={500}
+              color={isQueued ? '#febc06' : '#3cdb1c'}
+            >
+              {`${status}`}
+            </Text>
+          }
+        />
         <TableRow lable="Base Txs" content={`${baseTxLength}`} isOdd={false} />
         <TableRow
           lable="L1 Batch Number"
           content={`${proverJob?.l1_batch_number}`}
-          isOdd={false}
         />
-        <TableRow
-          lable="Success"
-          content={`${proverJob?.success}`}
-          isOdd={false}
-        />
-        <TableRow
-          lable="In Progress"
-          content={`${proverJob?.in_progress}`}
-          isOdd={false}
-        />
-        <TableRow
-          lable="Queue"
-          content={`${proverJob?.queued}`}
-          isOdd={false}
-        />
+        <TableRow lable="Success" content={`${proverJob?.success}`} />
+        <TableRow lable="In Progress" content={`${proverJob?.in_progress}`} />
+        <TableRow lable="Queue" content={`${proverJob?.queued}`} />
       </>
     );
   };

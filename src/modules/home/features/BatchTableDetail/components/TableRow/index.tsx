@@ -7,10 +7,11 @@ type Props = {
   lable: string;
   content?: React.ReactNode;
   isOdd?: boolean;
+  color?: string;
 };
 
 const TableRow = (props: Props) => {
-  const { lable, content } = props;
+  const { lable, content, color = '#fff' } = props;
 
   return (
     <Flex
@@ -32,7 +33,6 @@ const TableRow = (props: Props) => {
         whiteSpace={'nowrap'}
         fontSize={'15px'}
         fontWeight={600}
-        color={'#fff'}
         overflow={'hidden'}
         textAlign={'start'}
       >
