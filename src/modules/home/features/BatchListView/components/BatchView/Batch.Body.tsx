@@ -24,7 +24,10 @@ const BatchBody = (props: BlockProps) => {
     return (
       <>
         <Text color={'#ffe205'} fontWeight={700}>
-          {`revealTxId: ${formatAddressCenter(revealTxId || '', 6)}`}
+          {`Verified by Light Node:`}
+          <Text color={'#ffe205'} fontWeight={700} fontSize={'14px'}>
+            {`${formatAddressCenter(revealTxId || '', 6)}`}
+          </Text>
         </Text>
       </>
     );

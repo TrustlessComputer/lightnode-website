@@ -25,7 +25,7 @@ const BatchTableDetail = () => {
     return (
       <>
         <TableRow
-          lable="Status"
+          lable="Verified by Light Node"
           content={
             <Text
               fontSize={'15px'}
@@ -38,7 +38,7 @@ const BatchTableDetail = () => {
           }
         />
         <TableRow
-          lable="Reveal TxId"
+          lable="Inscribed on Bitcoin at"
           content={
             <Link
               color={'#1bd8f4'}
@@ -53,10 +53,26 @@ const BatchTableDetail = () => {
                 }
               }}
             >
-              {`${formatAddressCenter(currentBatchSelected?.revealTxId || '', 14)}`}
+              {`${formatAddressCenter(currentBatchSelected?.revealTxId || '', 7)}`}
             </Link>
           }
           isOdd={true}
+        />
+        <TableRow
+          lable="Number of transactions:"
+          content={
+            <Text fontSize={'15px'} fontWeight={600}>
+              {`${currentBatchSelected?.baseTxLength}`}
+            </Text>
+          }
+        />
+        <TableRow
+          lable="Stored on DA at"
+          content={
+            <Text fontSize={'15px'} fontWeight={600}>
+              {``}
+            </Text>
+          }
         />
       </>
     );
@@ -69,7 +85,7 @@ const BatchTableDetail = () => {
     return (
       <>
         <TableRow
-          lable="Status"
+          lable="Verified by Light Node"
           content={
             <Text
               fontSize={'15px'}

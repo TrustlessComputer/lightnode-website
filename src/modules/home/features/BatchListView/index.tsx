@@ -33,6 +33,7 @@ const BatchListView = () => {
   const currentBatchSelected = useAppSelector(getCurrentBatchSelectedSelector);
 
   const timerRef = useRef<any>();
+  const scrollAlReady = useRef<boolean>(false);
 
   const dividerViewRef = createRef<HTMLElement>();
 
@@ -57,16 +58,17 @@ const BatchListView = () => {
   }, []);
 
   useEffect(() => {
-    if (isFetchBatchStatusDone) {
+    if (isFetchBatchStatusDone && !scrollAlReady.current) {
       setTimeout(() => {
         dividerViewRef?.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'center',
           inline: 'center',
         });
+        scrollAlReady.current = true;
       }, 500);
     }
-  }, [isFetchBatchStatusDone, dividerViewRef]);
+  }, [isFetchBatchStatusDone, dividerViewRef, scrollAlReady]);
 
   useEffect(() => {
     if (isFetchBatchStatusDone) {

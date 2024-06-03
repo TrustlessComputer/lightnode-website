@@ -12,17 +12,19 @@ const BatchPendingList = () => {
   const batchListPlaceHolder = useAppSelector(queueJobPlaceHolderSelector);
 
   if (batchList && batchList.length < 1) {
-    return (
-      <Flex flexDir={'row'} flex={1} gap={'20px'}>
-        {batchListPlaceHolder.map((item, index) => (
-          <BatchItem
-            key={`${item.batchNumber}-${index}`}
-            data={item}
-            index={index}
-          />
-        ))}
-      </Flex>
-    );
+    // return (
+    //   <Flex flexDir={'row'} flex={1} gap={'20px'}>
+    //     {batchListPlaceHolder.map((item, index) => (
+    //       <BatchItem
+    //         key={`${item.batchNumber}-${index}`}
+    //         data={item}
+    //         index={index}
+    //       />
+    //     ))}
+    //   </Flex>
+    // );
+
+    return <></>;
   }
 
   return (

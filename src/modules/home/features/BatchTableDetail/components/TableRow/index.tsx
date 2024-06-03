@@ -22,14 +22,14 @@ const TableRow = (props: Props) => {
       minH="50px"
       bgColor={'#181b2d'}
     >
-      <Flex maxW={'40%'} justify={'flex-start'} align={'center'}>
+      <Flex maxW={'50%'} justify={'flex-start'} align={'center'}>
         <Text fontSize={'15px'} fontWeight={500} color={'#d4d4d4'}>
           {lable}
         </Text>
       </Flex>
 
       <Flex
-        maxW={'60%'}
+        maxW={'50%'}
         whiteSpace={'nowrap'}
         fontSize={'15px'}
         fontWeight={600}
