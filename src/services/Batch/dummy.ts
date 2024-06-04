@@ -25,3 +25,16 @@ export const BATCH_SUCCESS_LIST: IBatch[] = new Array(5)
       label: '',
     };
   });
+
+export const BATCH_SUCCESS_LIST_V2: IBatch[] = new Array(10)
+  .fill(0)
+  .map((_, index) => {
+    return {
+      base_batch_number: '87654',
+      bitcoin_tx_hash: `SUCCESS-${index}`,
+      da_tx_hash: '',
+      batch_data: undefined,
+      status: BatchStatusEnum.SUCCESS,
+      label: '',
+    };
+  });

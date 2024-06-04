@@ -1,12 +1,11 @@
-import { IBatchData } from '@/services/Batch/type';
 import { Flex, Text } from '@chakra-ui/react';
 
 type BlockProps = {
-  data?: IBatchData;
+  text?: string;
 };
 
 const BatchFooter = (props: BlockProps) => {
-  const { data } = props;
+  const { text } = props;
   return (
     <Flex
       position={'absolute'}
@@ -26,7 +25,7 @@ const BatchFooter = (props: BlockProps) => {
         fontWeight={600}
         fontSize={'12px'}
       >
-        {data?.status}
+        {`${text || ''}`}
       </Text>
     </Flex>
   );

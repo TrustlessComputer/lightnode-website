@@ -1,7 +1,6 @@
 import { RootState } from '@/stores';
 import { createSelector } from '@reduxjs/toolkit';
-import { orderBy } from 'lodash';
-import { QUEUE_JOB_PLACEHOLDER } from './constants';
+import { orderBy, uniqBy } from 'lodash';
 
 export const batchStateSelector = (state: RootState) => state.batch;
 
@@ -23,13 +22,6 @@ export const queueJobSelector = createSelector(batchStateSelector, (state) => {
   // console.log('queuedJobSortedList ', queuedJobSortedList);
   return queuedJobSortedList;
 });
-
-export const queueJobPlaceHolderSelector = createSelector(
-  batchStateSelector,
-  (state) => {
-    return QUEUE_JOB_PLACEHOLDER;
-  },
-);
 
 export const pendingJobSelector = createSelector(
   batchStateSelector,
@@ -70,8 +62,9 @@ export const batchSuccessSelector = createSelector(
       (item) => Number(item.batchNumber),
       ['desc'],
     );
+    let batchUniq = uniqBy(batchSortedList, 'batchNumber');
     // console.log('batchSortedList ', batchSortedList);
-    return batchSortedList;
+    return batchUniq;
   },
 );
 
@@ -81,6 +74,20 @@ export const getBatchLastedSuccessSelector = createSelector(
     return data[0];
   },
 );
+
+export const loadMoreSelector = createSelector(batchStateSelector, (data) => {
+  const { isLoadMore, currentPage, totalBatches, numberOfItems, batchStatus } =
+    data;
+
+  const { sending, pending, success, queued } = batchStatus;
+  const currentTotalItem = sending + pending + success + queued;
+  const canLoreMore = currentTotalItem < totalBatches;
+
+  return {
+    isLoadMore,
+    canLoreMore,
+  };
+});
 
 export const batchStateAllDataSelector = createSelector(
   [

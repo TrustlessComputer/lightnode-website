@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/stores';
 import { setCurrentBath } from '@/stores/states/batch/reducer';
 import { getCurrentBatchSelectedSelector } from '@/stores/states/batch/selector';
 import BatchAnchor from './Batch.Anchor';
+import { getBatchStatusFactoryByBatchObj } from '@/stores/states/lightnode/selector';
 
 type BlockProps = {
   data?: IBatchData;
@@ -19,16 +20,13 @@ const BatchItem = (props: BlockProps) => {
 
   const dispatch = useAppDispatch();
   const currentBatch = useAppSelector(getCurrentBatchSelectedSelector);
+  const { statusStr } = useAppSelector(getBatchStatusFactoryByBatchObj)(data!);
 
   if (!data) return null;
   const { status, isEmpty } = data;
 
-  const isQueue = useMemo(() => {
-    return status === 'queued';
-  }, [status]);
-
   const isCurrentBlock = useMemo(() => {
-    return currentBatch?.batchNumber === data.batchNumber;
+    return currentBatch?.batchNumber === data?.batchNumber;
   }, [currentBatch, data]);
 
   const blockOnClickHandler = (data: IBatchData) => {
@@ -49,7 +47,7 @@ const BatchItem = (props: BlockProps) => {
     >
       {<BatchHeader data={data} />}
       <BatchBody data={data} blockOnClick={blockOnClickHandler} />
-      {<BatchFooter data={data} />}
+      {<BatchFooter text={statusStr} />}
       {isCurrentBlock && <BatchAnchor />}
     </Flex>
   );

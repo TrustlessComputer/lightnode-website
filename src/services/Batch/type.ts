@@ -24,6 +24,7 @@ export type IBatchQueueJob = {
 export type IBatchData = IBatchStatus & IBatchQueueJob;
 
 export type IBatchStatusResponse = {
+  totalBatches: number;
   queued: number;
   queuedJob: IBatchData[];
   pending: number;
@@ -35,6 +36,7 @@ export type IBatchStatusResponse = {
 };
 
 export const StatusResponseInit: IBatchStatusResponse = {
+  totalBatches: 0,
   queued: 0,
   queuedJob: [],
   pending: 0,

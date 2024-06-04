@@ -1,14 +1,21 @@
-// import l2ServicesAPI from '@/services/api/l2services';
-import BatchAPI from '@/services/Batch';
+import BatchAPI, { IGetBatchStatus } from '@/services/Batch';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IBatch } from './types';
 import { IBatchStatusResponse } from '@/services/Batch/type';
+import { RootState } from '@/stores';
 
 const fetchBatchStatus = createAsyncThunk(
   `BATCH_STATE/fetchBatchStatus`,
-  async () => {
+  async (_, { dispatch, getState }) => {
     try {
-      const data: IBatchStatusResponse = await BatchAPI.getBatchStatus();
+      const rootState = getState() as RootState;
+      const { batch: batchState } = rootState;
+
+      const params: IGetBatchStatus = {
+        numberOfItems: batchState.numberOfItems,
+        currentPage: batchState.currentPage + 1,
+      };
+
+      const data: IBatchStatusResponse = await BatchAPI.getBatchStatus(params);
       return data;
     } catch (error) {
       throw error;
@@ -16,28 +23,4 @@ const fetchBatchStatus = createAsyncThunk(
   },
 );
 
-const fetchBatchSuccessList = createAsyncThunk(
-  `BATCH_STATE/fetchBatchSuccessList`,
-  async () => {
-    try {
-      const data: IBatch[] = await BatchAPI.getBatchSuccess();
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
-
-const fetchBatchPendingList = createAsyncThunk(
-  `BATCH_STATE/fetchBatchPendingList`,
-  async (): Promise<IBatch[]> => {
-    try {
-      const data: IBatch[] = await BatchAPI.getBatchPending();
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  },
-);
-
-export { fetchBatchStatus, fetchBatchPendingList, fetchBatchSuccessList };
+export { fetchBatchStatus };

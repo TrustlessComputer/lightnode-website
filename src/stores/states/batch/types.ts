@@ -22,15 +22,11 @@ export interface IBatchState {
   isBatchStatusFetched: boolean;
   fetchBatchStatusError?: Error | string;
 
-  batchSuccessList: IBatch[];
-  isBatchSuccessFetching: boolean;
-  isBatchSuccessFetched: boolean;
-  fetchBatchSucessError?: Error | string;
-
-  batchPendingList: IBatch[];
-  isBatchPendingFetching: boolean;
-  isBatchPendingFetched: boolean;
-  fetchBatchPendingError?: Error | string;
-
   currentBatchSelect: IBatchData | undefined;
+
+  //Load More
+  isLoadMore: boolean;
+  totalBatches: number;
+  currentPage: number;
+  numberOfItems: number;
 }

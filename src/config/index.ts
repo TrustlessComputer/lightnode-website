@@ -9,7 +9,8 @@ export const DOMAIN_URL: string = process.env.NEXT_PUBLIC_DOMAIN_URL!;
 export const CDN_URL: string = process.env.NEXT_PUBLIC_CDN_URL!;
 
 // API
-export const API_URL: string = process.env.NEXT_PUBLIC_API!;
+export const CHAIN_API: string = process.env.NEXT_PUBLIC_CHAIN_API!;
+export const LIGHTNODE_API: string = process.env.NEXT_PUBLIC_LIGHTNODE_API!;
 
 // PUBLIC URL
 export const BITCOIN_EXPLORER_URL: string =

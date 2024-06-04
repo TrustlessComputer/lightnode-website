@@ -1,37 +1,26 @@
-import { API_URL } from '@/config';
+import { CHAIN_API } from '@/config';
 import createAxiosInstance from '@/services/http-client';
 import { IBatchStatusResponse } from './type';
 import { BATCH_PENDING_LIST, BATCH_SUCCESS_LIST } from './dummy';
 
 const apiClient = createAxiosInstance({
-  baseURL: `${API_URL}`,
+  baseURL: `${CHAIN_API}`,
 });
 
-const getBatchStatus = async () => {
+export type IGetBatchStatus = {
+  currentPage?: number;
+  numberOfItems?: number;
+};
+
+const getBatchStatus = async ({
+  currentPage,
+  numberOfItems,
+}: IGetBatchStatus) => {
   try {
-    const result: IBatchStatusResponse = await apiClient.get(`/status`);
+    const result: IBatchStatusResponse = await apiClient.get(
+      `/status/${currentPage}/${numberOfItems}`,
+    );
     return result;
-  } catch (error) {
-    throw error;
-  }
-};
-
-const getBatchSuccess = async () => {
-  try {
-    // const result: any[] = await apiClient.get(`/todo`);
-    // return result;
-    return BATCH_SUCCESS_LIST;
-  } catch (error) {
-    throw error;
-  }
-};
-
-const getBatchPending = async () => {
-  try {
-    // const result: any[] = await apiClient.get(`/todo`);
-    // return result;
-
-    return BATCH_PENDING_LIST;
   } catch (error) {
     throw error;
   }
@@ -39,8 +28,6 @@ const getBatchPending = async () => {
 
 const BatchAPI = {
   getBatchStatus,
-  getBatchSuccess,
-  getBatchPending,
 };
 
 export default BatchAPI;

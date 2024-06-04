@@ -1,7 +1,6 @@
 'use client';
 
 import { Box, Flex, Image } from '@chakra-ui/react';
-import s from './styles.module.scss';
 
 type Props = {
   margin?: number;
