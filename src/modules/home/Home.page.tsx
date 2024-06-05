@@ -13,7 +13,6 @@ const HomePage = () => {
       flexDir={'column'}
       bgColor={'black'}
       align={'center'}
-      gap={'20px'}
     >
       <Flex
         className={s.title}
@@ -37,7 +36,13 @@ const HomePage = () => {
       <BatchListView />
 
       {/* White Break Line */}
-      <Flex bgColor={'#fff'} maxW={'50%'} w={'50%'} h={'4px'} />
+      <Flex
+        bgColor={'#fff'}
+        maxW={'50%'}
+        w={'50%'}
+        h={'4px'}
+        marginTop={'-20px'}
+      />
 
       {/* Table Detail content */}
       <BatchTableDetail />

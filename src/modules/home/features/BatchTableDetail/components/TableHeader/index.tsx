@@ -14,7 +14,13 @@ const TableHeader = () => {
   }, [currentBatchSelected]);
 
   return (
-    <Flex direction={'row'} align={'center'} gap={'10px'} fontSize={'30px'}>
+    <Flex
+      direction={'row'}
+      align={'center'}
+      gap={'10px'}
+      fontSize={'30px'}
+      mt={'20px'}
+    >
       <Text color={'#fff'} fontWeight={600}>
         {'Batch: '}
       </Text>
