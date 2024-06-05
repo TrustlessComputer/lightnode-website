@@ -14,7 +14,7 @@ const BatchBody = (props: BlockProps) => {
 
   if (!data) return null;
 
-  const { status, revealTxId, baseTxLength, proverJob, isEmpty } = data;
+  const { status, revealTxId, baseTxLength, proverJob } = data;
 
   const isQueue = useMemo(() => {
     return status === 'queued';
@@ -23,9 +23,9 @@ const BatchBody = (props: BlockProps) => {
   const renderSuccessData = () => {
     return (
       <>
-        <Text color={'#ffe205'} fontWeight={700} textTransform={'capitalize'}>
+        <Text color={'#ffe205'} fontWeight={700}>
           {`Verified by Light Node:`}
-          <Text color={'#ffe205'} fontWeight={700} fontSize={'14px'}>
+          <Text color={'#ffe205'} fontWeight={600} fontSize={'13px'}>
             {`${formatAddressCenter(revealTxId || '', 6)}`}
           </Text>
         </Text>
@@ -34,28 +34,34 @@ const BatchBody = (props: BlockProps) => {
   };
 
   const renderQueueData = () => {
-    if (isEmpty)
-      return (
-        <Text color={'#fff'} fontWeight={700}>
-          {`Empty`}
-        </Text>
-      );
     return (
-      <Flex flexDir={'column'} gap={'3px'}>
-        <Text color={'#fff'} fontWeight={700}>
-          {`baseTxLength: ${baseTxLength}`}
-        </Text>
-        {/* <Text color={'#fff'} fontWeight={700}>
-          {`l1_batch_number: ${proverJob?.l1_batch_number}`}
-        </Text> */}
-        <Text color={'#fff'} fontWeight={700}>
-          {`success: ${proverJob?.success}`}
-        </Text>
-        <Text color={'#fff'} fontWeight={700}>
-          {`in_progress: ${proverJob?.in_progress}`}
-        </Text>
-      </Flex>
+      <Text color={'#fff'} fontWeight={700}>
+        {`Proving`}
+      </Text>
     );
+
+    // if (isEmpty)
+    //   return (
+    //     <Text color={'#fff'} fontWeight={700}>
+    //       {`Empty`}
+    //     </Text>
+    //   );
+    // return (
+    //   <Flex flexDir={'column'} gap={'3px'}>
+    //     <Text color={'#fff'} fontWeight={700}>
+    //       {`baseTxLength: ${baseTxLength}`}
+    //     </Text>
+    //     {/* <Text color={'#fff'} fontWeight={700}>
+    //       {`l1_batch_number: ${proverJob?.l1_batch_number}`}
+    //     </Text> */}
+    //     <Text color={'#fff'} fontWeight={700}>
+    //       {`success: ${proverJob?.success}`}
+    //     </Text>
+    //     <Text color={'#fff'} fontWeight={700}>
+    //       {`in_progress: ${proverJob?.in_progress}`}
+    //     </Text>
+    //   </Flex>
+    // );
   };
 
   return (

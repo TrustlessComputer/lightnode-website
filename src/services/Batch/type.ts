@@ -2,9 +2,6 @@ export type IBatchStatus = {
   batchNumber?: string;
   status?: string;
   revealTxId?: string;
-
-  //Local State
-  isEmpty?: boolean;
 };
 
 export type IBatchQueueJob = {
@@ -17,7 +14,7 @@ export type IBatchQueueJob = {
     failed?: number;
     in_progress?: number;
     queued?: number;
-    compression_status?: string;
+    compression_status?: string; //prove status
   };
 };
 

@@ -46,6 +46,7 @@ const BatchListView = () => {
 
           setTimeout(() => {
             fetchBacthStatusData();
+            fetchLightNodeStatusData();
           }, 500);
         }
       } else {

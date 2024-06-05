@@ -88,33 +88,3 @@ export const loadMoreSelector = createSelector(batchStateSelector, (data) => {
     canLoreMore,
   };
 });
-
-export const batchStateAllDataSelector = createSelector(
-  [
-    batchStateSelector,
-    queueJobSelector,
-    pendingJobSelector,
-    sendingJobSelector,
-    successJobSelector,
-  ],
-  (
-    state,
-    queueJobWrapper,
-    pendingJobWrapper,
-    sendingJobWrapper,
-    successJobWrapper,
-  ) => {
-    const batchFINAL =
-      pendingJobWrapper || sendingJobWrapper || successJobWrapper;
-    const batchQUEUE = queueJobWrapper;
-    return {
-      ...state,
-      queueJobSorted: queueJobWrapper,
-      pendingJobSorted: pendingJobWrapper,
-      sendingJobSorted: sendingJobWrapper,
-      successJobSorted: successJobWrapper,
-      batchFINAL,
-      batchQUEUE,
-    };
-  },
-);

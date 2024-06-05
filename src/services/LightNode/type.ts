@@ -1,8 +1,7 @@
 export type ILightNodeItem = {
-  base_batch_number: number;
-  per_page: number;
-  total: number;
-  total_pages: number;
+  base_batch_number: string;
+  bitcoin_tx_hash: string;
+  da_tx_hash: string;
   batch_data: any;
 };
 

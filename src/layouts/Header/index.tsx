@@ -18,7 +18,7 @@ const Header = (props: Props) => {
           opacity: 0.8,
         }}
       >
-        <Image src={`/icons/logo-2.svg`} height={'45px'} width={'auto'} />
+        <Image src={`/icons/logo-4.svg`} height={'35px'} width={'auto'} />
       </Flex>
     </Box>
   );

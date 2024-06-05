@@ -23,18 +23,14 @@ const BatchItem = (props: BlockProps) => {
   const { statusStr } = useAppSelector(getBatchStatusFactoryByBatchObj)(data!);
 
   if (!data) return null;
-  const { status, isEmpty } = data;
+  const { status } = data;
 
   const isCurrentBlock = useMemo(() => {
     return currentBatch?.batchNumber === data?.batchNumber;
   }, [currentBatch, data]);
 
   const blockOnClickHandler = (data: IBatchData) => {
-    if (isEmpty) {
-    } else {
-      // window.open(`${BITCOIN_EXPLORER_URL}/tx/${data.revealTxId}`, '_blank');
-      dispatch(setCurrentBath(data));
-    }
+    dispatch(setCurrentBath(data));
   };
 
   return (

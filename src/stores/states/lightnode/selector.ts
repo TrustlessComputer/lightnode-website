@@ -20,6 +20,14 @@ export const getLightNodeBatchIDsSelector = createSelector(
   },
 );
 
+export const getLightNodeInforByBatchID = createSelector(
+  lightNodeStateSelector,
+  (state) => (batchNumber: string | number) => {
+    const { data = [] } = state.lightNodeStatus;
+    return data.find((item) => item.base_batch_number === batchNumber);
+  },
+);
+
 export const getBatchStatusFactoryByBatchObj = createSelector(
   getBatchLastedItem,
   (lastedItem) => (bathObj: IBatchData) => {
