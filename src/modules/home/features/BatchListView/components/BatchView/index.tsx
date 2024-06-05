@@ -23,7 +23,6 @@ const BatchItem = (props: BlockProps) => {
   const { statusStr } = useAppSelector(getBatchStatusFactoryByBatchObj)(data!);
 
   if (!data) return null;
-  const { status } = data;
 
   const isCurrentBlock = useMemo(() => {
     return currentBatch?.batchNumber === data?.batchNumber;
