@@ -14,8 +14,6 @@ import { getLightNodeInforByBatchID } from '@/stores/states/lightnode/selector';
 const BatchTableDetail = () => {
   const currentBatchSelected = useAppSelector(getCurrentBatchSelectedSelector);
 
-  console.log('currentBatchSelected ', currentBatchSelected);
-
   const lightNodeInfor = useAppSelector(getLightNodeInforByBatchID)(
     currentBatchSelected?.batchNumber!,
   );
@@ -35,7 +33,7 @@ const BatchTableDetail = () => {
         {/* Data Detail */}
         <SimpleGrid columns={2} spacing={'20px'} bgColor={'#24273e'} p="20px">
           <TableRow
-            lable="Verified by Light Node:"
+            lable="Status"
             content={
               <Text
                 fontSize={'15px'}
@@ -43,7 +41,8 @@ const BatchTableDetail = () => {
                 textTransform={'capitalize'}
                 color={isQueued ? '#febc06' : '#3cdb1c'}
               >
-                {`${currentBatchSelected?.status}`}
+                {/* {`${currentBatchSelected?.status}`} */}
+                {'Verified by Light Node'}
               </Text>
             }
           />
@@ -112,7 +111,7 @@ const BatchTableDetail = () => {
         <TableHeader />
         <SimpleGrid columns={2} spacing={'20px'} bgColor={'#24273e'} p="20px">
           <TableRow
-            lable="Verified by Light Node:"
+            lable="Status"
             content={
               <Text
                 fontSize={'15px'}

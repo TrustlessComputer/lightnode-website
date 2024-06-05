@@ -21,12 +21,13 @@ const HomePage = () => {
         mt="30px"
         mx={'20px'}
         mb={'0px'}
-        px="20px"
+        px="140px"
         py="30px"
         borderRadius={'8px'}
         alignSelf={'flex-start'}
+        textAlign={'center'}
       >
-        <Text fontSize={'20px'} fontWeight={500} w={'70%'}>
+        <Text fontSize={'20px'} fontWeight={500} w={'100%'}>
           Light Nodes validate that (1) state transitions committed on DA layers
           by Bitcoin L3 Sequencers and (2) those committed on Bitcoin by the
           Supersonic Sequencer are accurate

@@ -5,7 +5,10 @@ import BatchSkeleton from './BatchSkeleton';
 
 export default () => {
   const batchSuccessList = useMemo(
-    () => BATCH_SUCCESS_LIST_V2.map(() => <BatchSkeleton />),
+    () =>
+      BATCH_SUCCESS_LIST_V2.map((item, index) => (
+        <BatchSkeleton id={item.bitcoin_tx_hash + index} />
+      )),
     [],
   );
   return (
