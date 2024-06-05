@@ -7,6 +7,7 @@
   max-height: 500px;
   margin-top: 10px;
   padding: 10px 60px;
-  overflow-x: hidden;
+  overflow-x: scroll;
   overflow-y: hidden;
+  scrollbar-width: none;
 }
