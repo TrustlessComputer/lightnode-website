@@ -41,8 +41,12 @@ const slice = createSlice({
         (state, action: PayloadAction<ILightNodeStatusResponse>) => {
           state.isLightNodeStatusFetching = false;
           state.isLightNodeStatusFetched = true;
-          state.lightNodeStatus = action.payload;
+          state.lightNodeStatus = {
+            ...state.lightNodeStatus,
+            data: [...state.lightNodeStatus.data, ...action.payload.data],
+          };
           state.fetchLightNodeStatusError = undefined;
+          state.currentPage = state.currentPage + 1;
         },
       )
       .addCase(fetchLightNodeStatus.rejected, (state, action) => {

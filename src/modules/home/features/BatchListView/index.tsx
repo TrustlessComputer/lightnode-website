@@ -1,12 +1,13 @@
 'use client';
 
 import { Flex } from '@chakra-ui/react';
-import { createRef, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import BatchPendingList from './components/BatchPendingList';
 import BatchSkeletonList from './components/BatchSkeletonList/BatchSkeletonList';
 import BatchSuccessList from './components/BatchSuccessList';
 
 import { useBatchStore } from '@/hooks/useBatchStore';
+import { useLightNode } from '@/hooks/useLightNode';
 import { useAppSelector } from '@/stores';
 import { setCurrentBath, setLoadMore } from '@/stores/states/batch/reducer';
 import {
@@ -16,8 +17,10 @@ import {
 } from '@/stores/states/batch/selector';
 import BatchSkeletonLoadingList from './components/BatchSkeletonList/BatchSkeletonLoadingList';
 import BlockDivider from './components/BlockDivider';
+import ScrollToBottom from './components/ScrollToBottom';
+import ScrollToTop from './components/ScrollToTop';
 import s from './styles.module.scss';
-import { useLightNode } from '@/hooks/useLightNode';
+import { useScrollToView } from '@/hooks/useScrollToView';
 
 const DISTANCE_NEAR_BOTTOM = 100;
 
@@ -31,6 +34,10 @@ const BatchListView = () => {
   const currentBatchSelected = useAppSelector(getCurrentBatchSelectedSelector);
 
   const listInnerRef = useRef<any>();
+
+  const { scrollToTop, scrollToEnd } = useScrollToView({
+    elementRef: listInnerRef,
+  });
 
   const onScroll = () => {
     if (listInnerRef.current) {
@@ -94,6 +101,8 @@ const BatchListView = () => {
   return (
     <div className={s.container} ref={listInnerRef}>
       {isFetchBatchStatusDone ? renderData() : <BatchSkeletonList />}
+      <ScrollToTop onClick={scrollToTop} />
+      <ScrollToBottom onClick={scrollToEnd} />
     </div>
   );
 };

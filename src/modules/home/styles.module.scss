@@ -2,6 +2,9 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 20px;
   background-color: #1d1f31;
+
+  .title {
+    width: -webkit-fill-available;
+  }
 }
