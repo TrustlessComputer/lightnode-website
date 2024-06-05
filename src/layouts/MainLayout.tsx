@@ -23,7 +23,7 @@ const MainLayout = ({
     <Flex className={s.container}>
       {!hideHeader && <Header />}
       {children}
-      {!hideFooter && <Footer />}
+      {/* {!hideFooter && <Footer />} */}
     </Flex>
   );
 };

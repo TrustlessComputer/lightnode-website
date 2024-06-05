@@ -16,20 +16,26 @@ const HomePage = () => {
     >
       <Flex
         className={s.title}
+        flexDir={'column'}
         bg={'#323656'}
         mt="30px"
         mx={'20px'}
-        mb={'0px'}
-        px="140px"
-        py="30px"
+        gap={'8px'}
+        mb={'30px'}
+        p={'20px'}
+        maxW={'50%'}
+        width={'50%'}
         borderRadius={'8px'}
-        alignSelf={'flex-start'}
-        textAlign={'center'}
+        alignSelf={'center'}
+        textAlign={'left'}
       >
-        <Text fontSize={'20px'} fontWeight={500} w={'100%'}>
-          Light Nodes validate that (1) state transitions committed on DA layers
+        <Text fontSize={'18px'} fontWeight={600} w={'100%'}>
+          {`How it work:`}
+        </Text>
+        <Text fontSize={'14px'} fontWeight={400} w={'100%'} opacity={0.6}>
+          {`Light Nodes validate that (1) state transitions committed on DA layers
           by Bitcoin L3 Sequencers and (2) those committed on Bitcoin by the
-          Supersonic Sequencer are accurate
+          Supersonic Sequencer are accurate`}
         </Text>
       </Flex>
 
