@@ -4,7 +4,7 @@ export const BATCH_PENDING_LIST: IBatch[] = new Array(5)
   .fill(0)
   .map((_, index) => {
     return {
-      base_batch_number: ``,
+      base_batch_number: `123456`,
       bitcoin_tx_hash: `PENDING-${index}`,
       da_tx_hash: '',
       batch_data: undefined,

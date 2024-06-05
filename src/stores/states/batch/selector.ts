@@ -23,30 +23,6 @@ export const queueJobSelector = createSelector(batchStateSelector, (state) => {
   return queuedJobSortedList;
 });
 
-export const pendingJobSelector = createSelector(
-  batchStateSelector,
-  (state) => {
-    const { pendingJob = [] } = state.batchStatus;
-    return orderBy(pendingJob, ['batchNumber'], ['desc']);
-  },
-);
-
-export const sendingJobSelector = createSelector(
-  batchStateSelector,
-  (state) => {
-    const { sendingJob = [] } = state.batchStatus;
-    return orderBy(sendingJob, ['batchNumber'], ['desc']);
-  },
-);
-
-export const successJobSelector = createSelector(
-  batchStateSelector,
-  (state) => {
-    const { successJob = [] } = state.batchStatus;
-    return orderBy(successJob, ['batchNumber'], ['desc']);
-  },
-);
-
 export const batchSuccessSelector = createSelector(
   batchStateSelector,
   (state) => {

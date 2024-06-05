@@ -14,7 +14,7 @@ const BatchBody = (props: BlockProps) => {
 
   if (!data) return null;
 
-  const { status, revealTxId, baseTxLength, proverJob } = data;
+  const { status, revealTxId } = data;
 
   const isQueue = useMemo(() => {
     return status === 'queued';
@@ -25,7 +25,12 @@ const BatchBody = (props: BlockProps) => {
       <>
         <Text color={'#ffe205'} fontWeight={700}>
           {`Verified by Light Node:`}
-          <Text color={'#ffe205'} fontWeight={600} fontSize={'13px'}>
+          <Text
+            as={'span'}
+            color={'#ffe205'}
+            fontWeight={600}
+            fontSize={'13px'}
+          >
             {`${formatAddressCenter(revealTxId || '', 6)}`}
           </Text>
         </Text>
