@@ -39,7 +39,7 @@ export const getBatchStatusFactoryByBatchObj = createSelector(
       if (bathObj?.status === 'queued') {
         statusStr = 'Queued';
       } else {
-        statusStr = 'Waitting';
+        statusStr = 'Confirming';
       }
     } else {
       statusStr = 'Success';

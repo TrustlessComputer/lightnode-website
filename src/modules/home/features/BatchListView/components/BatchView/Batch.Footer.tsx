@@ -17,12 +17,12 @@ const BatchFooter = (props: BlockProps) => {
       zIndex={1}
     >
       <Text
-        bgColor={'#344b9f'}
+        bgColor={text === 'Confirming' ? '#febc06' : '#344b9f'}
         borderRadius={'4px'}
         py={'3px'}
         px="6px"
-        color={'#fff'}
-        fontWeight={600}
+        color={text === 'Confirming' ? '#000' : '#fff'}
+        fontWeight={700}
         fontSize={'12px'}
       >
         {`${text || ''}`}
