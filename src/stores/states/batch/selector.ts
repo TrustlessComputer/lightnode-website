@@ -14,13 +14,14 @@ export const getCurrentBatchSelectedSelector = createSelector(
 export const queueJobSelector = createSelector(batchStateSelector, (state) => {
   const { queuedJob = [] } = state.batchStatus;
 
-  let queuedJobSortedList = orderBy(
-    queuedJob,
-    (item) => Number(item.batchNumber),
-    ['desc'],
-  );
-  // console.log('queuedJobSortedList ', queuedJobSortedList);
-  return queuedJobSortedList;
+  //Sort
+  // let queuedJobSortedList = orderBy(
+  //   queuedJob,
+  //   (item) => Number(item.batchNumber),
+  //   ['desc'],
+  // );
+
+  return queuedJob;
 });
 
 export const batchSuccessSelector = createSelector(
@@ -32,15 +33,14 @@ export const batchSuccessSelector = createSelector(
       successJob = [],
     } = state.batchStatus;
 
-    let batchList = [...pendingJob, ...sendingJob, ...successJob];
-    let batchSortedList = orderBy(
-      batchList,
-      (item) => Number(item.batchNumber),
-      ['desc'],
-    );
-    let batchUniq = uniqBy(batchSortedList, 'batchNumber');
-    // console.log('batchSortedList ', batchSortedList);
-    return batchUniq;
+    let list = [...pendingJob, ...sendingJob, ...successJob];
+    // let batchSortedList = orderBy(
+    //   batchList,
+    //   (item) => Number(item.batchNumber),
+    //   ['desc'],
+    // );
+    list = uniqBy(list, 'batchNumber');
+    return list;
   },
 );
 

@@ -7,7 +7,7 @@ export default () => {
   const batchSuccessList = useMemo(
     () =>
       BATCH_SUCCESS_LIST_V2.map((item, index) => (
-        <BatchSkeleton key={`${item.bitcoin_tx_hash}-${index}`} />
+        <BatchSkeleton key={`${item.revealTxId}-${index}`} />
       )),
     [],
   );
