@@ -21,9 +21,7 @@ export default () => {
       <Flex gap={'50px'}>
         {BATCH_SUCCESS_LIST.map((item, index) => {
           return (
-            <BatchSkeleton
-              key={`${item.bitcoin_tx_hash}-${index}`}
-            ></BatchSkeleton>
+            <BatchSkeleton key={`${item.revealTxId}-${index}`}></BatchSkeleton>
           );
         })}
       </Flex>
@@ -32,7 +30,7 @@ export default () => {
 
       <Flex gap={'50px'}>
         {BATCH_PENDING_LIST.map((item, index) => (
-          <BatchSkeleton key={`${item.bitcoin_tx_hash}-${index}`} />
+          <BatchSkeleton key={`${item.revealTxId}-${index}`} />
         ))}
       </Flex>
     </Flex>

@@ -5,6 +5,11 @@ import BatchView from './BatchView';
 
 const BlockSuccessList = () => {
   const batchList = useAppSelector(batchSuccessSelector);
+
+  if (!batchList || batchList.length < 1) {
+    return <></>;
+  }
+
   return (
     <Flex flexDir={'row'} flex={1} gap={'20px'}>
       {batchList.map((item, index) => (

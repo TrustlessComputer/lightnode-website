@@ -6,7 +6,7 @@ import BatchItem from './BatchView';
 const BatchPendingList = () => {
   const batchList = useAppSelector(queueJobSelector);
 
-  if (batchList && batchList.length < 1) {
+  if (!batchList || batchList.length < 1) {
     return <></>;
   }
 
