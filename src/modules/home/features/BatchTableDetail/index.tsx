@@ -15,7 +15,11 @@ import {
 } from '@/stores/states/lightnode/selector';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
+import { useBatchStore } from '@/hooks/useBatchStore';
+import TableSkeleton from './components/TableSkeleton';
+
 const BatchTableDetail = () => {
+  const { isFetchBatchStatusDone } = useBatchStore();
   const currentBatchSelected = useAppSelector(getCurrentBatchSelectedSelector);
 
   const lightNodeInfor = useAppSelector(getLightNodeInforByBatchID)(
@@ -225,12 +229,13 @@ const BatchTableDetail = () => {
 
   return (
     <Flex className={s.container}>
-      {/* Header */}
-      {isQueued ? rendeQueuedData() : renderSuccessData()}
-
-      {/* <SimpleGrid columns={2} spacing={'20px'} bgColor={'#24273e'} p="20px">
-        {isQueued ? rendeQueuedData() : renderSuccessData()}
-      </SimpleGrid> */}
+      {!isFetchBatchStatusDone ? (
+        <TableSkeleton />
+      ) : isQueued ? (
+        rendeQueuedData()
+      ) : (
+        renderSuccessData()
+      )}
     </Flex>
   );
 };
