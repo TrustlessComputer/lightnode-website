@@ -33,9 +33,7 @@ const HomePage = () => {
           {`How it work:`}
         </Text>
         <Text fontSize={'14px'} fontWeight={400} w={'100%'} opacity={0.6}>
-          {`Light Nodes validate that (1) state transitions committed on DA layers
-          by Bitcoin L3 Sequencers and (2) those committed on Bitcoin by the
-          Supersonic Sequencer are accurate`}
+          {`Light nodes validate that the state transitions of Bitcoin L3s and Supersonic, committed on the Bitcoin and DA layers, are accurate.`}
         </Text>
       </Flex>
 

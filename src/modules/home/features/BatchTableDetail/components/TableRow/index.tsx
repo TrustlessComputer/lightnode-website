@@ -30,11 +30,14 @@ const TableRow = (props: Props) => {
 
       <Flex
         maxW={'50%'}
+        width={'50%'}
         whiteSpace={'nowrap'}
         fontSize={'15px'}
         fontWeight={700}
         overflow={'hidden'}
-        textAlign={'start'}
+        textAlign={'end'}
+        justify={'flex-end'}
+        align={'center'}
       >
         {content}
       </Flex>

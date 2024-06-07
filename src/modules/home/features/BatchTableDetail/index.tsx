@@ -8,8 +8,12 @@ import { useAppSelector } from '@/stores';
 import { getCurrentBatchSelectedSelector } from '@/stores/states/batch/selector';
 import { useMemo } from 'react';
 import { formatAddressCenter } from '@/utils/string';
-import { BITCOIN_EXPLORER_URL } from '@/config';
-import { getLightNodeInforByBatchID } from '@/stores/states/lightnode/selector';
+import { BITCOIN_EXPLORER_URL, SUPERSONIC_EXPLORER_URL } from '@/config';
+import {
+  getBatchStatusFactoryByBatchObj,
+  getLightNodeInforByBatchID,
+} from '@/stores/states/lightnode/selector';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const BatchTableDetail = () => {
   const currentBatchSelected = useAppSelector(getCurrentBatchSelectedSelector);
@@ -26,6 +30,10 @@ const BatchTableDetail = () => {
     return currentBatchSelected?.status === 'success';
   }, [currentBatchSelected]);
 
+  const { statusStr } = useAppSelector(getBatchStatusFactoryByBatchObj)(
+    currentBatchSelected!,
+  );
+
   const renderSuccessData = () => {
     return (
       <>
@@ -39,10 +47,12 @@ const BatchTableDetail = () => {
                 fontSize={'15px'}
                 fontWeight={600}
                 textTransform={'capitalize'}
-                color={isQueued ? '#febc06' : '#3cdb1c'}
+                color={statusStr === 'Confirming' ? '#febc06' : '#3cdb1c'}
               >
                 {/* {`${currentBatchSelected?.status}`} */}
-                {'Verified by Light Node'}
+                {statusStr === 'Confirming'
+                  ? 'Confirming'
+                  : 'Verified by Light Node'}
               </Text>
             }
           />
@@ -70,9 +80,30 @@ const BatchTableDetail = () => {
           <TableRow
             lable="Number of transactions:"
             content={
-              <Text fontSize={'15px'} fontWeight={600}>
-                {`${currentBatchSelected?.baseTxLength}`}
-              </Text>
+              <Flex
+                display={'flex'}
+                flexDir={'row'}
+                alignItems={'center'}
+                justifyContent={'flex-end'}
+                gap={'8px'}
+                flex={1}
+                _hover={{
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  window.open(
+                    `${SUPERSONIC_EXPLORER_URL}/batch/${currentBatchSelected?.batchNumber!}`,
+                  );
+                }}
+              >
+                {/* <Text fontSize={'15px'} fontWeight={600}>
+                  {`${currentBatchSelected?.baseTxLength}`}
+                </Text> */}
+                <Link color={'#1bd8f4'} fontSize={'16px'} fontWeight={600}>
+                  {`${currentBatchSelected?.baseTxLength}`}
+                </Link>
+                <ExternalLinkIcon h={'16px'} w={'auto'} color={'#fefefe'} />
+              </Flex>
             }
           />
           {isSuccess && (
@@ -125,8 +156,29 @@ const BatchTableDetail = () => {
           />
           <TableRow
             lable="Base Txs"
-            content={`${baseTxLength}`}
-            isOdd={false}
+            content={
+              <Flex
+                display={'flex'}
+                flexDir={'row'}
+                alignItems={'center'}
+                justifyContent={'flex-end'}
+                gap={'8px'}
+                flex={1}
+                _hover={{
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  window.open(
+                    `${SUPERSONIC_EXPLORER_URL}/batch/${currentBatchSelected?.batchNumber!}`,
+                  );
+                }}
+              >
+                <Link color={'#1bd8f4'} fontSize={'16px'} fontWeight={600}>
+                  {`${baseTxLength}`}
+                </Link>
+                <ExternalLinkIcon h={'16px'} w={'auto'} color={'#fefefe'} />
+              </Flex>
+            }
           />
           {/* <TableRow
             lable="L1 Batch Number"

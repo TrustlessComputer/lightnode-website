@@ -16,6 +16,9 @@ export const LIGHTNODE_API: string = process.env.NEXT_PUBLIC_LIGHTNODE_API!;
 export const BITCOIN_EXPLORER_URL: string =
   process.env.NEXT_PUBLIC_BITCOIN_EXPLORER_URL!;
 
+export const SUPERSONIC_EXPLORER_URL: string =
+  process.env.NEXT_PUBLIC_SUPERSONIC_EXPLORER_URL!;
+
 // Envs
 export const isDevelop = APP_ENV === 'develop';
 export const isStaging = APP_ENV === 'staging';

@@ -32,7 +32,7 @@ export const getBatchStatusFactoryByBatchObj = createSelector(
   getBatchLastedItem,
   (lastedItem) => (bathObj: IBatchData) => {
     const batchNumberLasted = Number(lastedItem?.base_batch_number);
-    const batchNumberCurrent = Number(bathObj.batchNumber);
+    const batchNumberCurrent = Number(bathObj?.batchNumber);
 
     let statusStr = '';
     if (batchNumberCurrent > batchNumberLasted) {
