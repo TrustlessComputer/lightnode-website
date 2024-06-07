@@ -1,37 +1,20 @@
-FROM node:18-bullseye AS base
+# Use the latest Node.js 20 image
+FROM node:20
 
-# 1. Install dependencies only when needed
-FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-
+# Set the working directory to /app
 WORKDIR /app
 
-ARG SECRET_DEPLOY_GITHUB_TOKEN=""
-ARG SECRET_DEPLOY_GITHUB_USER=""
-ENV SECRET_DEPLOY_GITHUB_TOKEN $SECRET_DEPLOY_GITHUB_TOKEN
-ENV SECRET_DEPLOY_GITHUB_USER $SECRET_DEPLOY_GITHUB_USER
-RUN git config --global url."https://${SECRET_DEPLOY_GITHUB_USER}:${SECRET_DEPLOY_GITHUB_TOKEN}@github.com/TrustlessComputer/".insteadOf "https://github.com/TrustlessComputer/"
-
-# Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN yarn install
-
-
-# 2. Rebuild the source code only when needed
-FROM base AS builder
-WORKDIR /app
-ARG BUILD_ENV=production
-ARG NODE_ENV=production
-
-ENV NODE_ENV $NODE_ENV
-
-COPY envs/.env.$BUILD_ENV .env
-COPY --from=deps /app/node_modules ./node_modules
+# Copy the repository contents into the container
 COPY . .
+
+# Install dependencies
+RUN yarn
+
+# Build the application
 RUN yarn build
 
-EXPOSE 3000
+# Expose port 5001
+EXPOSE 5001
 
+# Start the application
 CMD ["yarn", "start"]
-
-
