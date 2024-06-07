@@ -15,13 +15,13 @@ export const queueJobSelector = createSelector(batchStateSelector, (state) => {
   const { queuedJob = [] } = state.batchStatus;
 
   //Sort
-  // let queuedJobSortedList = orderBy(
-  //   queuedJob,
-  //   (item) => Number(item.batchNumber),
-  //   ['desc'],
-  // );
+  let queuedJobSortedList = orderBy(
+    queuedJob,
+    (item) => Number(item.batchNumber),
+    ['desc'],
+  );
 
-  return queuedJob;
+  return queuedJobSortedList;
 });
 
 export const batchSuccessSelector = createSelector(
