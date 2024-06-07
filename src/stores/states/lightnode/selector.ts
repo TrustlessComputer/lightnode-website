@@ -42,7 +42,7 @@ export const getBatchStatusFactoryByBatchObj = createSelector(
         statusStr = 'Confirming';
       }
     } else {
-      statusStr = 'Success';
+      statusStr = 'Verified';
     }
 
     return { statusStr };
