@@ -30,7 +30,7 @@ const HomePage = () => {
         textAlign={'left'}
       >
         <Text fontSize={'18px'} fontWeight={600} w={'100%'}>
-          {`How it work:`}
+          {`How it works:`}
         </Text>
         <Text fontSize={'14px'} fontWeight={400} w={'100%'} opacity={0.6}>
           {`Light nodes validate that the state transitions of Bitcoin L3s and Supersonic, committed on the Bitcoin and DA layers, are accurate.`}
