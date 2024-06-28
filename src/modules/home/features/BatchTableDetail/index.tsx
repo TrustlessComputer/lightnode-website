@@ -8,7 +8,11 @@ import { useAppSelector } from '@/stores';
 import { getCurrentBatchSelectedSelector } from '@/stores/states/batch/selector';
 import { useMemo } from 'react';
 import { formatAddressCenter } from '@/utils/string';
-import { BITCOIN_EXPLORER_URL, SUPERSONIC_EXPLORER_URL } from '@/config';
+import {
+  BITCOIN_EXPLORER_URL,
+  POLYGON_URL,
+  SUPERSONIC_EXPLORER_URL,
+} from '@/config';
 import {
   getBatchStatusFactoryByBatchObj,
   getLightNodeInforByBatchID,
@@ -122,7 +126,7 @@ const BatchTableDetail = () => {
                     if (isQueued) {
                     } else {
                       window.open(
-                        `https://amoy.polygonscan.com/tx/${lightNodeInfor?.da_tx_hash}`,
+                        `${POLYGON_URL}/tx/${lightNodeInfor?.da_tx_hash}`,
                       );
                     }
                   }}
