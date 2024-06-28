@@ -18,7 +18,7 @@ const getBatchStatus = async ({
 }: IGetBatchStatus) => {
   try {
     const result: IBatchStatusResponse = await apiClient.get(
-      `/status/${currentPage}/${numberOfItems}`,
+      `/l1rollupstatus/${currentPage}/${numberOfItems}`,
     );
     return result;
   } catch (error) {
