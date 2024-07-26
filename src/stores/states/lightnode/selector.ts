@@ -24,7 +24,9 @@ export const getLightNodeInforByBatchID = createSelector(
   lightNodeStateSelector,
   (state) => (batchNumber: string | number) => {
     const { data = [] } = state.lightNodeStatus;
-    return data.find((item) => item?.base_batch_number === batchNumber);
+    return data.find(
+      (item) => String(item?.base_batch_number) === String(batchNumber),
+    );
   },
 );
 
