@@ -15,7 +15,7 @@
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
     "build-dev-deploy": "export PORT=5001 && cp ./envs/.env.develop .env  && rm -rf .next && next build && next start",
-    "build-production-deploy": "export PORT=5001 && cp ./envs/.env.production .env  && rm -rf .next && next build && next start"
+    "build-production-deploy": "export PORT=5501 && cp ./envs/.env.production .env  && rm -rf .next && next build && next start"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
