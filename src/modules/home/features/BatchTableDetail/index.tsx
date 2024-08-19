@@ -12,6 +12,7 @@ import {
   BITCOIN_EXPLORER_URL,
   POLYGON_URL,
   SUPERSONIC_EXPLORER_URL,
+  BITCOIN_MEMPOOL_URL,
 } from '@/config';
 import {
   getBatchStatusFactoryByBatchObj,
@@ -125,9 +126,16 @@ const BatchTableDetail = () => {
                   onClick={() => {
                     if (isQueued) {
                     } else {
-                      window.open(
-                        `${POLYGON_URL}/tx/${lightNodeInfor?.da_tx_hash}`,
-                      );
+                      if (lightNodeInfor?.bitcoin_da_tx_hash) {
+                        window.open(
+                          `${BITCOIN_MEMPOOL_URL}/tx/${lightNodeInfor?.bitcoin_da_tx_hash}`,
+                        );
+                      } else if (lightNodeInfor?.da_tx_hash) {
+                        window.open(
+                          `${POLYGON_URL}/tx/${lightNodeInfor?.da_tx_hash}`,
+                        );
+                      } else {
+                      }
                     }
                   }}
                 >

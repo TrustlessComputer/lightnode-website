@@ -21,6 +21,8 @@ export const SUPERSONIC_EXPLORER_URL: string =
 
 // DA
 export const POLYGON_URL: string = process.env.NEXT_PUBLIC_POLYGON_URL!;
+export const BITCOIN_MEMPOOL_URL: string =
+  process.env.NEXT_PUBLIC_BITCOIN_MEMPOOL_URL!;
 
 // Envs
 export const isDevelop = APP_ENV === 'develop';
