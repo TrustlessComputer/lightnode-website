@@ -139,7 +139,7 @@ const BatchTableDetail = () => {
                     }
                   }}
                 >
-                  {`${formatAddressCenter(lightNodeInfor?.da_tx_hash || '', 7)}`}
+                  {`${formatAddressCenter(lightNodeInfor?.bitcoin_da_tx_hash || lightNodeInfor?.da_tx_hash || '', 7)}`}
                 </Link>
               }
             />
