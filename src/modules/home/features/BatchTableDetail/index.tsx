@@ -35,6 +35,18 @@ const BatchTableDetail = () => {
     return currentBatchSelected?.status === 'queued';
   }, [currentBatchSelected]);
 
+  const basedDAType = useMemo(() => {
+    if (lightNodeInfor?.bitcoin_da_tx_hash) {
+      return 'Bitcoin';
+    }
+
+    if (lightNodeInfor?.da_tx_hash) {
+      return 'Polygon';
+    }
+
+    return undefined;
+  }, [lightNodeInfor]);
+
   const isSuccess = useMemo(() => {
     return currentBatchSelected?.status === 'success';
   }, [currentBatchSelected]);
@@ -66,7 +78,7 @@ const BatchTableDetail = () => {
             }
           />
           <TableRow
-            lable="Inscribed on Bitcoin at:"
+            lable="Proof inscribed on Bitcoin:"
             content={
               <Link
                 color={'#1bd8f4'}
@@ -115,9 +127,9 @@ const BatchTableDetail = () => {
               </Flex>
             }
           />
-          {isSuccess && (
+          {isSuccess && basedDAType && (
             <TableRow
-              lable="Stored on DA at:"
+              lable={`Tx batch stored on ${basedDAType}:`}
               content={
                 <Link
                   color={'#1bd8f4'}
